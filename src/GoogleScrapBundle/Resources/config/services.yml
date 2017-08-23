@@ -1,0 +1,4 @@
+services:
+#    google_scrap.example:
+#        class: GoogleScrapBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
