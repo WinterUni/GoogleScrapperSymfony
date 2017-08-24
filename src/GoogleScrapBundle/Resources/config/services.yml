@@ -1,4 +1,10 @@
 services:
+
+    _defaults:
+        autowire: true
+
+    google_scrap.google_scrap:
+        class: GoogleScrapBundle\Service\GoogleScrap
 #    google_scrap.example:
 #        class: GoogleScrapBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]

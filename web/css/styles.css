@@ -1,0 +1,50 @@
+.scrap-form {
+    background-color: #F5F5F5;
+    padding: 10px 10px 10px 10px;
+    margin-top: 10px;
+}
+
+.scrap-form h2 {
+    margin: 10px 0 10px 15px;
+}
+
+.scrap-input {
+    margin-left: -10px;
+    margin-right: -10px;
+    background-color: #5cb85c;
+}
+
+.submit-btn {
+    margin: 10px auto auto 15px;
+}
+
+.form-label {
+    margin: 10px auto 10px auto;
+    padding: 10px 0 10px 10px;
+    border-radius: 5px;
+    background-color: #F5F5F5;
+}
+
+.no-padding-left-right--col {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.success-flash {
+    margin: 10px 0 10px 0;
+    padding: 10px 0 10px 10px;
+    border-radius: 5px;
+    background-color: #5cb85c;
+}
+
+.no-success-font-color {
+    color: #FF3860;
+}
+
+.success-font-color {
+    color: #5cb85c;
+}
+
+thead {
+    background-color: #F5F5F5;
+}

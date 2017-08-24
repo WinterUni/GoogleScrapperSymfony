@@ -1,0 +1,55 @@
+{% extends 'GoogleScrapBundle:Layout:base.html.twig' %}
+
+{% block content %}
+    <h1>Выборка результатов из Google</h1>
+
+    {{ include('@GoogleScrap/Partials/topMenu.html.twig') }}
+
+    {% for msg in app.session.flashBag.get('success') %}
+        <div class="row success-flash">
+            <div class="col-xs-12">
+                {{ msg }}
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="scrap-form">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Введите домен и ключевое слово</h2>
+            </div>
+        </div>
+
+        {{ form_start(scrapResultForm) }}
+
+        <div class="row scrap-input">
+        <div class="col-xs-12 col-sm-6 no-padding-left-right--col">
+            <div class="col-xs-12">
+                <p class="form-label">Домен</p>
+            </div>
+            <div class="col-xs-12 ">
+                {{ form_row(scrapResultForm.domainName) }}
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 no-padding-left-right--col">
+            <div class="col-xs-12">
+                <p class="form-label">Ключевое слово</p>
+            </div>
+            <div class="col-xs-12">
+                {{ form_row(scrapResultForm.keyWord) }}
+            </div>
+        </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 submit-btn">
+                <button class="btn btn-primary">Запросить</button>
+            </div>
+        </div>
+
+        {{ form_end(scrapResultForm) }}
+
+    </div>
+{% endblock %}

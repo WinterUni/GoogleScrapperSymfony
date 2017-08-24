@@ -1,0 +1,74 @@
+{% extends 'GoogleScrapBundle:Layout:base.html.twig' %}
+
+{% block content %}
+    <h1>История парсинга</h1>
+
+    {{ include('@GoogleScrap/Partials/topMenu.html.twig') }}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th class="text-center">Id</th>
+            <th class="text-center">Доменное имя</th>
+            <th class="text-center">Ключевое слово</th>
+            <th class="text-center">Позиция в Google</th>
+            <th class="text-center">Дата выборки</th>
+            <th class="text-center">Статус прокси</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for scrapResult in scrapResults %}
+            <tr class="text-center">
+                <td>{{ scrapResult.id }}</td>
+                <td>{{ scrapResult.domainName }}</td>
+                <td>{{ scrapResult.keyWord }}</td>
+                {% if scrapResult.position is null %}
+                    <td class="no-success-font-color">Результатов нет</td>
+                {% else %}
+                    <td>{{ scrapResult.position }}</td>
+                {% endif %}
+                <td>{{ scrapResult.queryDate|date("Y-m-d H:i:s") }}</td>
+                {% if scrapResult.queryStatus %}
+                    <td><i class="success-font-color fa fa-check"></i></td>
+                {% else %}
+                    <td><i class="no-success-font-color fa fa-ban"></i></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="row text-center">
+        <ul class="pagination">
+            {% if currentPage != 1 %}
+                <li>
+                    <a href="{{ path('history_page', {page: 1}) }}"><i class="fa fa-angle-double-left"></i></a>
+                </li>
+                <li>
+                    <a href="{{ path('history_page', {page: currentPage - 1}) }}"><i class="fa fa-angle-left"></i></a>
+                </li>
+            {% endif %}
+
+            {% for pageNumber in 1..pagesAmount %}
+                {%  if pageNumber == currentPage %}
+                    <li class="active">
+                        <a>{{ pageNumber }}</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{{ path('history_page', {page: pageNumber}) }}">{{ pageNumber }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if currentPage != pagesAmount %}
+                <li>
+                    <a href="{{ path('history_page', {page: currentPage + 1}) }}"><i class="fa fa-angle-right"></i></a>
+                </li>
+                <li>
+                    <a href="{{ path('history_page', {page: pagesAmount}) }}"><i class="fa fa-angle-double-right"></i></a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock %}
